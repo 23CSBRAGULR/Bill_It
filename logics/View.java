@@ -1,4 +1,4 @@
 package Bill_It.logics;
 
-public class Insertion {
+public class View {
 }
