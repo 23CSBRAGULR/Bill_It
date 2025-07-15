@@ -9,7 +9,8 @@ public class Staff {
         System.out.print("What would you like to do? ");
         System.out.println("1. View Bills");
         System.out.println("2. Add Bill");
-        System.out.println("3. Logout");
+        System.out.println("3. Update Bill");
+        System.out.println("4. Logout");
         Scanner operation = new Scanner(System.in);
         int choice = operation.nextInt();
         switch (choice) {

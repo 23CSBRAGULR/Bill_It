@@ -10,6 +10,8 @@ public class Admin {
         System.out.println("Admin logged in successfully.");
         System.out.println("What would you like to do? ");
         System.out.println("1. Insert\n2. Update\n3. Delete\n4. View\n5. Exit");
+        System.out.print("Please enter the number corresponding to your action: ");
+        // Read user input for action selection
         int choice = operation.nextInt();
 
         switch (choice) {

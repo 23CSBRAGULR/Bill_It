@@ -11,18 +11,32 @@ public class LogIn {
 
     public void whosUsing() {
         Scanner user = new Scanner(System.in);
-        System.out.print("Who is using the system? (Admin/Staff) : ");
-        String userType = user.nextLine().trim().toLowerCase();
-        if (userType.equals("admin")) {
+        System.out.print("Who is using the system?");
+        System.out.println(" 1. Admin");
+        System.out.println(" 2. Staff");
+        System.out.println(" 3. Customer");
+        System.out.println(" 4. Exit");
+        System.out.print("Please enter the number corresponding to your role: ");
+        // Read user input for role selection
+        int userType = user.nextInt();
+        if (userType == 1) {
             System.out.println("Admin login process initiated.");
             Admin admin = new Admin();
             admin.login();
-        } else if (userType.equals("staff")) {
+        } else if (userType == 2) {
             System.out.println("Staff login process initiated.");
             Staff staff = new Staff();
             staff.login();
-        } else {
-            System.out.println("Invalid user type. Please enter 'Admin' or 'Staff'.");
+        } else if (userType == 3) {
+            System.out.println("Customer login process initiated.");
+            Customer customer = new Customer();
+            customer.login();
+        } else if(userType == 4) {
+            System.out.println("Exiting the system. Goodbye!");
+            System.exit(0);
+        }
+        else {
+            System.out.println("Invalid user type. Please try again.");
             whosUsing(); // Prompt again for valid input
         }
         user.close();
