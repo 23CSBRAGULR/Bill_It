@@ -3,7 +3,7 @@ package Bill_It.logics;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-class Ointment extends DataBase {
+class Ointment extends ProductDB {
     String name;
     double price;
     int quantity;
@@ -29,7 +29,7 @@ class Ointment extends DataBase {
 
 }
 
-class Tablets extends DataBase {
+class Tablets extends ProductDB {
     String name;
     double price;
     int quantity;
@@ -54,7 +54,7 @@ class Tablets extends DataBase {
     }
 }
 
-class Syrup extends DataBase {
+class Syrup extends ProductDB {
     String name;
     double price;
     int quantity;
@@ -79,10 +79,10 @@ class Syrup extends DataBase {
     }
 }
 
-public class DataBase {
-    DataBase ointment = new Ointment("Ointment A", 50.00, 10);
-    DataBase tablet = new Tablets("Tablet A", 30.00, 20);
-    DataBase syrup = new Syrup("Syrup A", 40.00, 18);
+public class ProductDB {
+    ProductDB ointment = new Ointment("Ointment A", 50.00, 10);
+    ProductDB tablet = new Tablets("Tablet A", 30.00, 20);
+    ProductDB syrup = new Syrup("Syrup A", 40.00, 18);
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the type of medicine (ointment/tablet/syrup): ");

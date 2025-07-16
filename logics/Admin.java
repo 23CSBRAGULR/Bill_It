@@ -9,31 +9,27 @@ public class Admin {
 
         System.out.println("Admin logged in successfully.");
         System.out.println("What would you like to do? ");
-        System.out.println("1. Insert\n2. Update\n3. Delete\n4. View\n5. Exit");
+        System.out.println("1. View Transactions");
+        System.out.println("2. View Invoices");
+        System.out.println("3. View/Modify Users");
+        System.out.println("4. View/Modify Customers");
+        System.out.println("5. Log out");
         System.out.print("Please enter the number corresponding to your action: ");
         // Read user input for action selection
         int choice = operation.nextInt();
 
         switch (choice) {
             case 1:
-                System.out.println("Insert operation selected.");
-                Insertion insert = new Insertion();
-                insert.insertData();
+                System.out.println("Transaction Database Accessing process initiated");
                 break;
             case 2:
-                System.out.println("Update operation selected.");
-                Update update = new Update();
-                update.updateData();
+                System.out.println("Invoice Database Accessing process initiated");
                 break;
             case 3:
-                System.out.println("Delete operation selected.");
-                Deletion delete = new Deletion();
-                delete.deleteData();
+                System.out.println("User Database Accessing process initiated");
                 break;
             case 4:
-                System.out.println("View operation selected.");
-                View view = new View();
-                view.viewData();
+                System.out.println("Customer Database Accessing process initiated");
                 break;
             case 5:
                 System.out.println("Logging out...");

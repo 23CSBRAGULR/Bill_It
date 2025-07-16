@@ -4,6 +4,13 @@ public class Main {
     public static void main(String[] args) {
         LogIn login = new LogIn();
         login.start();
-        System.exit(0);
+        UserDB userDB = new UserDB();
+        userDB.start();
+        CustomerDB customerDB = new CustomerDB();
+        customerDB.start();
+        InvoiceDB invoiceDB = new InvoiceDB();
+        invoiceDB.start();
+        ProductDB productDB = new ProductDB();
+        productDB.start();
     }
 }

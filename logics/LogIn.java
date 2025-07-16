@@ -14,8 +14,7 @@ public class LogIn {
         System.out.print("Who is using the system?");
         System.out.println(" 1. Admin");
         System.out.println(" 2. Staff");
-        System.out.println(" 3. Customer");
-        System.out.println(" 4. Exit");
+        System.out.println(" 3. Exit");
         System.out.print("Please enter the number corresponding to your role: ");
         // Read user input for role selection
         int userType = user.nextInt();
@@ -27,16 +26,12 @@ public class LogIn {
             System.out.println("Staff login process initiated.");
             Staff staff = new Staff();
             staff.login();
-        } else if (userType == 3) {
-            System.out.println("Customer login process initiated.");
-            Customer customer = new Customer();
-            customer.login();
-        } else if(userType == 4) {
+        } else if(userType == 3) {
             System.out.println("Exiting the system. Goodbye!");
             System.exit(0);
         }
         else {
-            System.out.println("Invalid user type. Please try again.");
+            System.out.println("Invalid choice. Please try again.");
             whosUsing(); // Prompt again for valid input
         }
         user.close();
