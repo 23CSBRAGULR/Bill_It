@@ -29,7 +29,7 @@ public class LogOut {
     }
 
     public void logOut() {
-        System.out.println("User has been logged out successfully.");
+        System.out.println("Logged out Successfully");
         nextProcess();
     }
 

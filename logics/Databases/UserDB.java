@@ -1,4 +1,4 @@
-package Bill_It.logics.Databases;
+package Bill_It.logics.DataBases;
 
 public class UserDB {
 }

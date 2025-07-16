@@ -4,20 +4,23 @@ import java.util.Scanner;
 
 import Bill_It.logics.Users.Admin;
 import Bill_It.logics.Users.Staff;
+import Bill_It.logics.DataBases.DBM;
 
 public class LogIn {
 
     public void start() {
-        System.out.println("Welcome to the Bill It System!");
+        System.out.println("Welcome to the Bill It System");
+        DBM dbm = new DBM();
+        dbm.start(); // Initialize all databases
         whosUsing();
     }
 
     public void whosUsing() {
         Scanner user = new Scanner(System.in);
         System.out.print("Who is using the system?");
-        System.out.println(" 1. Admin");
-        System.out.println(" 2. Staff");
-        System.out.println(" 3. Exit");
+        System.out.println("1. Admin");
+        System.out.println("2. Staff");
+        System.out.println("3. Exit");
         System.out.print("Please enter the number corresponding to your role: ");
         // Read user input for role selection
         int userType = user.nextInt();

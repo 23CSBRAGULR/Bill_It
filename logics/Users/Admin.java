@@ -38,7 +38,7 @@ public class Admin {
                 System.out.println("Product Database Accessing process initiated");
                 break;
             case 6:
-                System.out.println("Logging out...");
+                System.out.println("Logging out");
                 LogOut logout = new LogOut();
                 logout.logOut();
                 break;
