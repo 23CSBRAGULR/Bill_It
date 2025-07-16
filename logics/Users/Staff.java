@@ -1,27 +1,29 @@
-package Bill_It.logics;
+package Bill_It.logics.Users;
 
 import java.util.Scanner;
+
+import Bill_It.logics.Initiation.LogOut;
 
 public class Staff {
 
     public void login() {
         System.out.println("Staff login successful.");
-        System.out.print("What would you like to do? ");
-        System.out.println("1. View Invoice Database");
-        System.out.println("2. View/Modify Product Database");
-        System.out.println("3. View/Modify Customer Database");
+        System.out.println("What would you like to do?");
+        System.out.println("1. View/Modify Products");
+        System.out.println("2. View/Modify Invoices");
+        System.out.println("3. View/Modify Customers");
         System.out.println("4. Logout");
         Scanner operation = new Scanner(System.in);
         int choice = operation.nextInt();
         switch (choice) {
             case 1:
-                System.out.println("Accessing Bill Database...");
+                System.out.println("Product Database accessing process initiated");
                 break;
             case 2:
-                System.out.println("Accessing Product Database...");
+                System.out.println("Invoice Database accessing process initiated");
                 break;
             case 3:
-                System.out.println("Accessing Customer Database...");
+                System.out.println("Customer Database accessing process initiated");
                 break;
             case 4:
                 System.out.println("Logging Out...");

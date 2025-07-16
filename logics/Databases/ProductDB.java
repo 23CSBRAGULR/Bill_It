@@ -1,4 +1,4 @@
-package Bill_It.logics;
+package Bill_It.logics.Databases;
 
 import java.util.Scanner;
 import java.util.ArrayList;

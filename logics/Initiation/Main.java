@@ -1,4 +1,9 @@
-package Bill_It.logics;
+package Bill_It.logics.Initiation;
+
+import Bill_It.logics.Databases.CustomerDB;
+import Bill_It.logics.Databases.InvoiceDB;
+import Bill_It.logics.Databases.ProductDB;
+import Bill_It.logics.Databases.UserDB;
 
 public class Main {
     public static void main(String[] args) {

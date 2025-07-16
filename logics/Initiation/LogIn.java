@@ -1,6 +1,9 @@
-package Bill_It.logics;
+package Bill_It.logics.Initiation;
 
 import java.util.Scanner;
+
+import Bill_It.logics.Users.Admin;
+import Bill_It.logics.Users.Staff;
 
 public class LogIn {
 
