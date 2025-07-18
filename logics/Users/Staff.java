@@ -10,11 +10,12 @@ public class Staff {
         System.out.println("Staff login successful.");
         System.out.println("What would you like to do?");
         System.out.println("1. Make a Sale (Generate Bill)");
-        System.out.println("1. View/Modify Products");
-        System.out.println("2. View/Modify Bills");
-        System.out.println("3. View/Modify Customers");
-        System.out.println("4. View Invoices");
-        System.out.println("5. Logout");
+        System.out.println("2. View/Modify Products");
+        System.out.println("3. View/Modify Bills");
+        System.out.println("4. View/Modify Customers");
+        System.out.println("5. View Invoices");
+        System.out.println("6. Logout");
+        System.out.print("Please enter the number corresponding to your action: ");
         Scanner operation = new Scanner(System.in);
         int choice = operation.nextInt();
         switch (choice) {
