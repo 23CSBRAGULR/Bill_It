@@ -1,108 +1,64 @@
 package Bill_It.logics.DataBases;
 
-import java.util.Scanner;
 import java.util.ArrayList;
-
-class Ointment extends ProductDB {
-    String name;
-    double price;
-    int quantity;
-
-    public Ointment(String name, double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
-    public void ointments() {
-        ArrayList<Ointment> list = new ArrayList<>();
-        list.add(new Ointment("Flyfung Cream", 45.00, 5));
-        list.add(new Ointment("Krack Cream", 75.50, 10));
-        list.add(new Ointment("Clocip B Cream", 125.00, 4));
-
-        System.out.printf("| %-12s | %-6s | %-8s |\n", "Name", "Price", "Quantity");
-        System.out.println("|--------------|--------|----------|");
-        for (Ointment o : list) {
-            System.out.printf("| %-12s | %-6.2f | %-8d |\n", o.name, o.price, o.quantity);
-        }
-    }
-
-}
-
-class Tablets extends ProductDB {
-    String name;
-    double price;
-    int quantity;
-
-    public Tablets(String name, double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
-    public void tablets() {
-        ArrayList<Tablets> list = new ArrayList<>();
-        list.add(new Tablets("Dolo 650 Tablet", 2.30, 90));
-        list.add(new Tablets("Erythro 500 Tablet", 5.50, 50));
-        list.add(new Tablets("Pan 40 Tablet", 15.00, 150));
-
-        System.out.printf("| %-12s | %-6s | %-8s |\n", "Name", "Price", "Quantity");
-        System.out.println("|--------------|--------|----------|");
-        for (Tablets t : list) {
-            System.out.printf("| %-12s | %-6.2f | %-8d |\n", t.name, t.price, t.quantity);
-        }
-    }
-}
-
-class Syrup extends ProductDB {
-    String name;
-    double price;
-    int quantity;
-
-    public Syrup(String name, double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
-    public void syrups() {
-        ArrayList<Syrup> list = new ArrayList<>();
-        list.add(new Syrup("Zincovit Syrup", 110.00, 18));
-        list.add(new Syrup("Dexorange Syrup", 155.50, 10));
-        list.add(new Syrup("Asthalin Syrup", 25.00, 7));
-
-        System.out.printf("| %-12s | %-6s | %-8s |\n", "Name", "Price", "Quantity");
-        System.out.println("|--------------|--------|----------|");
-        for (Syrup s : list) {
-            System.out.printf("| %-12s | %-6.2f | %-8d |\n", s.name, s.price, s.quantity);
-        }
-    }
-}
+import java.util.HashMap;
 
 public class ProductDB {
-    ProductDB ointment = new Ointment("Ointment A", 50.00, 10);
-    ProductDB tablet = new Tablets("Tablet A", 30.00, 20);
-    ProductDB syrup = new Syrup("Syrup A", 40.00, 18);
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the type of medicine (ointment/tablet/syrup): ");
-        String type = scanner.nextLine().toLowerCase();
-        switch (type) {
-            case "ointment":
-                Ointment ointment = new Ointment("Ointment A", 50.00, 10);
-                ointment.ointments();
-                break;
-            case "tablet":
-                Tablets tablet = new Tablets("Tablet A", 30.00, 20);
-                tablet.tablets();
-                break;
-            case "syrup":
-                Syrup syrup = new Syrup("Syrup A", 40.00, 18);
-                syrup.syrups();
-                break;
-            default:
-                System.out.println("Invalid type of medicine.");
-        }
-        scanner.close();
+    String name;
+    int qty;
+    double price;
+
+    HashMap<String, HashMap<String, ArrayList<ProductDB>>> productTypes = new HashMap<>();
+
+    public ProductDB() {}
+
+    public ProductDB(String name, int qty, double price) {
+        this.name = name;
+        this.qty = qty;
+        this.price = price;
+    }
+
+    private void addProduct(String category, String subcategory, String name, int qty, double price) {
+        productTypes.putIfAbsent(category, new HashMap<>());
+        HashMap<String, ArrayList<ProductDB>> subMap = productTypes.get(category);
+        subMap.putIfAbsent(subcategory, new ArrayList<>());
+        subMap.get(subcategory).add(new ProductDB(name, qty, price));
+    }
+
+    public void start() {
+        addProduct("Tablets and Capsules", "Paracetamol", "Paracetamol", 10, 50.0);
+        addProduct("Tablets and Capsules", "Ibuprofen", "Ibuprofen", 20, 75.0);
+
+        addProduct("Ointments and Lotions", "Antiseptic Cream", "Antiseptic Cream", 15, 30.0);
+        addProduct("Ointments and Lotions", "Moisturizing Lotion", "Moisturizing Lotion", 25, 60.0);
+
+        addProduct("Syrups and Juices", "Cough Syrup", "Cough Syrup", 12, 40.0);
+        addProduct("Syrups and Juices", "Vitamin Juice", "Vitamin Juice", 18, 55.0);
+
+        addProduct("Cosmetics", "Lip Balm", "Lip Balm", 30, 20.0);
+        addProduct("Cosmetics", "Face Cream", "Face Cream", 22, 80.0);
+
+        addProduct("Inhalers and Rotacaps", "Asthma Inhaler", "Asthma Inhaler", 5, 150.0);
+        addProduct("Inhalers and Rotacaps", "Rotacap", "Rotacap", 8, 120.0);
+
+        addProduct("Injections and Suppositories", "Pain Relief Injection", "Pain Relief Injection", 3, 200.0);
+        addProduct("Injections and Suppositories", "Suppository", "Suppository", 4, 180.0);
+
+        addProduct("Infusions and Respules", "IV Infusion", "IV Infusion", 2, 500.0);
+        addProduct("Infusions and Respules", "Respule", "Respule", 6, 300.0);
+
+        addProduct("Eye and Ear Drops", "Eye Drop", "Eye Drop", 10, 25.0);
+        addProduct("Eye and Ear Drops", "Ear Drop", "Ear Drop", 8, 30.0);
+
+        addProduct("Syringes and Needles", "Syringe", "Syringe", 50, 5.0);
+        addProduct("Syringes and Needles", "Needle", "Needle", 100, 2.0);
+
+        addProduct("Bandages and Dressing", "Adhesive Bandage", "Adhesive Bandage", 40, 10.0);
+        addProduct("Bandages and Dressing", "Gauze Dressing", "Gauze Dressing", 30, 15.0);
+
+        addProduct("Sprays", "Disinfectant Spray", "Disinfectant Spray", 20, 35.0);
+        addProduct("Sprays", "Insect Repellent Spray", "Insect Repellent Spray", 15, 40.0);
+
+        addProduct("Other Products", "Thermometer", "Thermometer", 25, 60.0);
     }
 }
