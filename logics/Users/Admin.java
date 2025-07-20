@@ -3,6 +3,7 @@ package Bill_It.logics.Users;
 import java.util.Scanner;
 
 import Bill_It.logics.Initiation.LogOut;
+import Bill_It.logics.DataBases.TransactionDB;
 
 public class Admin {
 
@@ -25,6 +26,8 @@ public class Admin {
         switch (choice) {
             case 1:
                 System.out.println("Transaction Database Accessing process initiated");
+                TransactionDB transactions = new TransactionDB();
+                transactions.start();
                 break;
             case 2:
                 System.out.println("Invoice Database Accessing process initiated");

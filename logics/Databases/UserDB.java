@@ -18,7 +18,9 @@ public class UserDB {
         // Initialize the user database with some default users
         newAdmin("ragul", "adminragul");
         newAdmin("ram", "adminram");
+        newAdmin("dharniesh", "admindharniesh");
         newStaff("mathavan", "staffmathavan");
         newStaff("siva", "staffsiva");
+        newStaff("jayanthi", "staffjayanthi");
     }
 }
