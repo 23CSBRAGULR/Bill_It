@@ -12,6 +12,8 @@ public class TransactionDB {
     ArrayList<ArrayList<String>> transactions = new ArrayList<>();
     public int transactionCount = 0; // To keep track of the number of transactions
     public int totalRevenue = 0; // To keep track of total revenue
+    public int totalExpense = 0; // To keep track of total expenses
+    public int totalProfit = 0; // To keep track of total profit
     Scanner choices = new Scanner(System.in);
 
     public void addTransaction(String transactionId, String customerName, String productName, String amount) {
@@ -43,6 +45,8 @@ public class TransactionDB {
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.println("Total Transactions: " + transactionCount);
         System.out.println("Total Revenue: " + totalRevenue);
+        System.out.println("Total Expenses: " + totalExpense);
+        System.out.println("Total Profit: " + (totalRevenue - totalExpense));
         System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.println("Press any key to continue...");
         choices.nextLine(); // Wait for user input to continue
@@ -72,8 +76,15 @@ public class TransactionDB {
                 viewTransactions();
                 break;
             case 2:
-                Admin mainmenu = new Admin();
-                mainmenu.login();
+                if((this.getClass().getName()).equals("Staff")) {
+                    System.out.println("\nStaff logged out successfully.");
+                    Staff mainmenu = new Staff();
+                    mainmenu.login();
+                } else if((this.getClass().getName()).equals("Admin")) {
+                    System.out.println("\nAdmin logged out successfully.");
+                    Admin mainmenu = new Admin();
+                    mainmenu.login();
+                }
                 break;
             default:
                 System.out.println("Invalid choice. Please try again.");
