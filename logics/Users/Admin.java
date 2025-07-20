@@ -7,11 +7,15 @@ import Bill_It.logics.DataBases.TransactionDB;
 
 public class Admin {
 
-    public void login() {
-        Scanner operation = new Scanner(System.in);
+    Scanner operation = new Scanner(System.in);
 
-        System.out.println("Admin logged in successfully.");
-        System.out.println("What would you like to do? ");
+    public void start() {
+        System.out.println("\nAdmin logged in successfully.");
+        login();
+    }
+
+    public void login() {
+        System.out.println("\nWhat would you like to do? ");
         System.out.println("1. View Transactions");
         System.out.println("2. View Invoices (Store)");
         System.out.println("3. View/Modify Bill (Customers)");
@@ -25,27 +29,27 @@ public class Admin {
 
         switch (choice) {
             case 1:
-                System.out.println("Transaction Database Accessing process initiated");
+                System.out.println("\nTransaction Database Accessing process initiated");
                 TransactionDB transactions = new TransactionDB();
                 transactions.start();
                 break;
             case 2:
-                System.out.println("Invoice Database Accessing process initiated");
+                System.out.println("\nInvoice Database Accessing process initiated");
                 break;
             case 3:
-                System.out.println("Bill Database Accessing process initiated");
+                System.out.println("\nBill Database Accessing process initiated");
                 break;
             case 4:
-                System.out.println("User Database Accessing process initiated");
+                System.out.println("\nUser Database Accessing process initiated");
                 break;
             case 5:
-                System.out.println("Customer Database Accessing process initiated");
+                System.out.println("\nCustomer Database Accessing process initiated");
                 break;
             case 6: 
-                System.out.println("Product Database Accessing process initiated");
+                System.out.println("\nProduct Database Accessing process initiated");
                 break;
             case 7:
-                System.out.println("Logging out");
+                System.out.println("\nLogging out");
                 LogOut logout = new LogOut();
                 logout.logOut();
                 break;

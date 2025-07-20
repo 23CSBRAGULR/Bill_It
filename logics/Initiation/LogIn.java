@@ -31,7 +31,7 @@ public class LogIn {
             password = userInfo.next();
             if(auth.adminLogin(username, password)) {
                 Admin admin = new Admin();
-                admin.login();
+                admin.start();
             } else {
                 invalid();
             }
