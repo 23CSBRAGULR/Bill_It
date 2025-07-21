@@ -1,9 +1,9 @@
-package Bill_It.logics.Initiation;
+package Bill_It.Logics_NoDB.Initiation;
 
 import java.util.Scanner;
 
-import Bill_It.logics.Users.Admin;
-import Bill_It.logics.Users.Staff;
+import Bill_It.Logics_NoDB.Users.Admin;
+import Bill_It.Logics_NoDB.Users.Staff;
 
 public class LogIn {
 

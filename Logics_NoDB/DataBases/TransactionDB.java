@@ -1,11 +1,11 @@
-package Bill_It.logics.DataBases;
+package Bill_It.Logics_NoDB.DataBases;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Bill_It.logics.Users.*;
+import Bill_It.Logics_NoDB.Users.*;
 
-public class TransactionDB {
+public class TransactionDB extends Admin {
 
     public final String[] transactionHeaders = {"S.No", "Transaction ID", "Customer Name", "Product Name", "Amount", "Type"};
     public final String[] transactionData = new String[6];
@@ -76,11 +76,11 @@ public class TransactionDB {
                 viewTransactions();
                 break;
             case 2:
-                if((this.getClass().getName()).equals("Staff")) {
+                if (this instanceof Staff) {
                     System.out.println("\nStaff logged out successfully.");
                     Staff mainmenu = new Staff();
                     mainmenu.login();
-                } else if((this.getClass().getName()).equals("Admin")) {
+                } else if (this instanceof Admin) {
                     System.out.println("\nAdmin logged out successfully.");
                     Admin mainmenu = new Admin();
                     mainmenu.login();

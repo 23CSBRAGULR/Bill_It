@@ -1,4 +1,4 @@
-package Bill_It.logics.Initiation;
+package Bill_It.Logics_NoDB.Initiation;
 
 import java.util.Scanner;
 

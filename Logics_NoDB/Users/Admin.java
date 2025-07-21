@@ -1,9 +1,9 @@
-package Bill_It.logics.Users;
+package Bill_It.Logics_NoDB.Users;
 
 import java.util.Scanner;
 
-import Bill_It.logics.Initiation.LogOut;
-import Bill_It.logics.DataBases.TransactionDB;
+import Bill_It.Logics_NoDB.DataBases.TransactionDB;
+import Bill_It.Logics_NoDB.Initiation.LogOut;
 
 public class Admin {
 

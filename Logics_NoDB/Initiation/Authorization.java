@@ -1,6 +1,6 @@
-package Bill_It.logics.Initiation;
+package Bill_It.Logics_NoDB.Initiation;
 
-import Bill_It.logics.DataBases.UserDB;
+import Bill_It.Logics_NoDB.DataBases.UserDB;
 
 public class Authorization {
     UserDB credentials = new UserDB();

@@ -1,10 +1,10 @@
-package Bill_It.logics.Users;
+package Bill_It.Logics_NoDB.Users;
 
 import java.util.Scanner;
 
-import Bill_It.logics.Initiation.LogOut;
+import Bill_It.Logics_NoDB.Initiation.LogOut;
 
-public class Staff {
+public class Staff extends Admin{
 
     public void login() {
         System.out.println("Staff login successful.");
