@@ -1,4 +1,4 @@
-package Bill_It.Logics_NoDB.Users;
+package Bill_It.no_DB_Version.Users;
 
 import java.util.Scanner;
 
