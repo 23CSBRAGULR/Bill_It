@@ -3,7 +3,7 @@ package Bill_It.no_DB_Version.DataBases;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Bill_It.Logics_NoDB.Users.*;
+import Bill_It.no_DB_Version.Users.*;
 
 public class TransactionDB extends Admin {
 
@@ -76,7 +76,7 @@ public class TransactionDB extends Admin {
                 viewTransactions();
                 break;
             case 2:
-                if (this instanceof Staff) {
+                if (this.instanceof(Staff)) {
                     System.out.println("\nStaff logged out successfully.");
                     Staff mainmenu = new Staff();
                     mainmenu.login();
