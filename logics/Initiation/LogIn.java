@@ -25,10 +25,11 @@ public class LogIn extends Main {
         Validation validation = new Validation();
         // Read user input for role selection
         int userType = userInfo.nextInt();
+        userInfo.nextLine(); // Clear the buffer
         String username, password;
         if (userType == 1) {
             System.out.print("Enter Admin Username: ");
-            username = userInfo.next();
+            username = userInfo.nextLine();
             if (validation.validateAdminName(username)) {
                 System.out.print("Enter Admin Password: ");
                 password = userInfo.next();
