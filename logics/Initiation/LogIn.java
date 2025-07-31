@@ -1,51 +1,80 @@
-package Bill_It.no_DB_Version.Initiation;
+package Bill_It.logics.Initiation;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
-import Bill_It.no_DB_Version.Users.Admin;
-import Bill_It.no_DB_Version.Users.Staff;
-
-public class LogIn {
+public class LogIn extends Main {
 
     public void start() {
         System.out.println("Welcome to the Bill It System");
-        whosUsing();
+        try {
+            whosUsing();
+        } catch (SQLException e) {
+            System.out.println("Error connecting to the database: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-    public void whosUsing() {
+    public void whosUsing() throws SQLException {
         Scanner userInfo = new Scanner(System.in);
         System.out.println("Who is using the system?");
         System.out.println("1. Admin");
         System.out.println("2. Staff");
         System.out.println("3. Exit");
         System.out.print("Please enter the number corresponding to your role: ");
-        Authorization auth = new Authorization();
+        Validation validation = new Validation();
         // Read user input for role selection
         int userType = userInfo.nextInt();
         String username, password;
         if (userType == 1) {
-            System.out.println("\nADMIN LOGIN\n");
-            System.out.print("Enter your Username : ");
+            System.out.print("Enter Admin Username: ");
             username = userInfo.next();
-            System.out.print("\nEnter your Password : ");
-            password = userInfo.next();
-            if(auth.adminLogin(username, password)) {
-                Admin admin = new Admin();
-                admin.start();
+            if (validation.validateAdminName(username)) {
+                System.out.print("Enter Admin Password: ");
+                password = userInfo.next();
+                int invalidCount = 0;
+                do {
+                    if (invalidCount > 0) {
+                        System.out.println("Invalid Password. Please try again. Attempts left: " + (3 - invalidCount));
+                        System.out.print("Enter Admin Password: ");
+                        userInfo.nextLine(); // Clear the buffer
+                    }
+                    password = userInfo.next();
+                    invalidCount++;
+                } while (!validation.validateAdminPassword(username, password) && invalidCount < 3);
+                if (!validation.validateAdminPassword(username, password)) {
+                    System.out.print("No Attempts left. Due to ");
+                    invalid();
+                } else {
+                    validation.adminLogin(); // Valid admin credentials
+                }
             } else {
-                invalid();
+                invalid(); // Invalid user type
             }
         } else if (userType == 2) {
-            System.out.println("\nSTAFF LOGIN\n");
-            System.out.print("Enter your Username : ");
+            System.out.print("Enter Staff Username: ");
             username = userInfo.next();
-            System.out.print("\nEnter your Password : ");
-            password = userInfo.next();
-            if(auth.staffLogin(username, password)) {
-                Staff staff = new Staff();
-                staff.login();
+            if (validation.validateStaffName(username)) {
+                System.out.print("Enter Staff Password: ");
+                password = userInfo.next();
+                int invalidCount = 0;
+                do {
+                    if (invalidCount > 0) {
+                        System.out.println("Invalid Password. Please try again. Attempts left: " + (3 - invalidCount));
+                        System.out.print("Enter Staff Password: ");
+                        userInfo.nextLine(); // Clear the buffer
+                    }
+                    password = userInfo.next();
+                    invalidCount++;
+                } while (!validation.validateStaffPassword(username, password) && invalidCount < 3);
+                if (!validation.validateStaffPassword(username, password)) {
+                    System.out.print("No Attempts left. Due to ");
+                    invalid();
+                } else {
+                    validation.staffLogin(); // Valid admin credentials
+                }
             } else {
-                invalid();
+                invalid(); // Invalid user type
             }
         } else if(userType == 3) {
             System.out.println("Exiting the system. Goodbye!");
@@ -59,8 +88,8 @@ public class LogIn {
         userInfo.close();
     }
 
-    public void invalid() {
-        System.out.println("Invalid Credentials. Please log in again");
+    public void invalid() throws SQLException {
+        System.out.println("Invalid Credentials. Please try logging in again");
         whosUsing(); // Prompt again for valid credentials
     }
 

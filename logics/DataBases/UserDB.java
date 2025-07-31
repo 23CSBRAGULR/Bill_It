@@ -1,26 +1,53 @@
-package Bill_It.no_DB_Version.DataBases;
+package Bill_It.logics.DataBases;
 
-import java.util.HashMap;
+import java.sql.*;
 
 public class UserDB {
-    public HashMap<String, String> admins = new HashMap<>();
-    public HashMap<String, String> staffs = new HashMap<>();
 
-    public void newAdmin(String username, String password) {
-        admins.put(username, password);
+    private final String url = "jdbc:mysql://localhost:3306/UserDB";
+    private final String un = "root";
+    private final String pw = "1269";
+
+    public boolean validateAdmin(String username) throws SQLException {
+        Connection admins = DriverManager.getConnection(url, un, pw);
+        String query = "SELECT COUNT(*) FROM admins WHERE username = ?;";
+        PreparedStatement pst = admins.prepareStatement(query);
+        pst.setString(1, username);
+        int count = pst.executeQuery().getInt(1);
+        boolean isValid = (count >= 1) ? true : false;
+        return isValid;
     }
 
-    public void newStaff(String username, String password) {
-        staffs.put(username, password);
+    public boolean validateAdmin(String username, String password) throws SQLException {
+        Connection admins = DriverManager.getConnection(url, un, pw);
+        String query = "SELECT COUNT(*) FROM admins WHERE username = ? AND password = ?;";
+        PreparedStatement pst = admins.prepareStatement(query);
+        pst.setString(1, username);
+        pst.setString(2, password);
+        int count = pst.executeQuery().getInt(1);
+        boolean isValid = (count >= 1) ? true : false;
+        return isValid;
     }
 
-    public void start() {
-        // Initialize the user database with some default users
-        newAdmin("ragul", "adminragul");
-        newAdmin("ram", "adminram");
-        newAdmin("dharniesh", "admindharniesh");
-        newStaff("mathavan", "staffmathavan");
-        newStaff("siva", "staffsiva");
-        newStaff("jayanthi", "staffjayanthi");
+    public boolean validateStaff(String username) throws SQLException {
+        Connection staffs = DriverManager.getConnection(url, un, pw);
+        String query = "SELECT COUNT(*) FROM admins WHERE username = ?;";
+        PreparedStatement pst = staffs.prepareStatement(query);
+        pst.setString(1, username);
+        int count = pst.executeQuery().getInt(1);
+        boolean isValid = (count >= 1) ? true : false;
+        return isValid;
     }
+
+    public boolean validateStaff(String username, String password) throws SQLException {
+        Connection staffs = DriverManager.getConnection(url, un, pw);
+        String query = "SELECT COUNT(*) FROM staffs WHERE username = ? AND password = ?;";
+        PreparedStatement pst = staffs.prepareStatement(query);
+        pst.setString(1, username);
+        pst.setString(2, password);
+        int count = pst.executeQuery().getInt(1);
+        boolean isValid = (count >= 1) ? true : false;
+        return isValid;
+    }
+
 }

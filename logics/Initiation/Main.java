@@ -1,4 +1,4 @@
-package Bill_It.no_DB_Version.Initiation;
+package Bill_It.logics.Initiation;
 
 public class Main {
     public static void main(String[] args) {

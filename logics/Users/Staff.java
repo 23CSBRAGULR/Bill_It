@@ -1,11 +1,17 @@
-package Bill_It.no_DB_Version.Users;
+package Bill_It.logics.Users;
 
 import java.util.Scanner;
 
-import Bill_It.no_DB_Version.Initiation.LogOut;
-import Bill_It.no_DB_Version.DataBases.UserDB;
+import Bill_It.logics.Initiation.LogOut;
 
-public class Staff extends UserDB {
+public class Staff{
+
+    Scanner operation = new Scanner(System.in);
+
+    public void start() {
+        System.out.println("\nAdmin logged in successfully.");
+        login();
+    }
 
     public void login() {
         System.out.println("Staff login successful.");

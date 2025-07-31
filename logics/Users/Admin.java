@@ -1,12 +1,11 @@
-package Bill_It.no_DB_Version.Users;
+package Bill_It.logics.Users;
 
 import java.util.Scanner;
 
 import Bill_It.no_DB_Version.DataBases.TransactionDB;
-import Bill_It.no_DB_Version.DataBases.UserDB;
 import Bill_It.no_DB_Version.Initiation.LogOut;
 
-public class Admin extends UserDB {
+public class Admin {
 
     Scanner operation = new Scanner(System.in);
 

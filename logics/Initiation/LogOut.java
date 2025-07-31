@@ -1,4 +1,4 @@
-package Bill_It.no_DB_Version.Initiation;
+package Bill_It.logics.Initiation;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class LogOut {
         switch (desicion) {
             case 1:
                 LogIn login = new LogIn();
-                login.whosUsing();
+                login.start();
                 break;
             case 2:
                 System.out.println("\nExiting the system. Goodbye!");
